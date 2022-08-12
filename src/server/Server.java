@@ -28,11 +28,24 @@ public class Server {
 
                 socket = serverSocket.accept();
 
-                System.out.println("client has connectd");
-
+                System.out.println("client has connected");
+                ClientHandler clientHandler = new ClientHandler(socket);
+                Thread thread = new Thread(clientHandler);
+                thread.start();
             }
         }catch (IOException exception){
             exception.printStackTrace();
         }
     }
+
+    public void closeServerSocket() {
+        try {
+            if (serverSocket != null) {
+                serverSocket.close();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

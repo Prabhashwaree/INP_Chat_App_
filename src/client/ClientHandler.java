@@ -2,15 +2,24 @@ package client;
 
 import java.io.*;
 import java.net.Socket;
+import java.util.ArrayList;
 
 public class ClientHandler implements Runnable{
 
-    Socket socket = new Socket();
+
+    private Socket socket;
+    private BufferedWriter bufferedWriter;
+    private String clientUsername;
     DataOutputStream dataOutputStream;
     DataInputStream dataInputStream;
     BufferedReader bufferedReader;
 
-    public ClientHandler() {
+    public ClientHandler(Socket socket) {
+//        try {
+//            this.socket = socket;
+//        }catch (){
+//
+//        }
     }
 
     public void initialize() {
