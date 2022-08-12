@@ -22,7 +22,7 @@ public class LoginFormController {
     public void btnLoginOnAction(ActionEvent actionEvent) throws IOException {
         userName = txtUserName.getText();
         if(userName.equals("")){
-            new Alert(Alert.AlertType.WARNING, "Waradiii !..").showAndWait();
+            new Alert(Alert.AlertType.WARNING, "Incorrect Your Name !..").showAndWait();
         }else {
             Stage stage = (Stage) txtUserName.getScene().getWindow();
             stage.close();
