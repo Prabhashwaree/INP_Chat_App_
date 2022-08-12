@@ -21,9 +21,23 @@ public class ClientHandler implements Runnable{
             this.bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             this.clientUsername =bufferedReader.readLine();
             client.add(this);
-
+            System.out.println("Errror enawa enawa iwrayak na ude idan ekama errror eka dennnna epa buruwoooo");
         }catch (IOException e){
             closeEverything(socket,bufferedReader,bufferedWriter);
+        }
+    }
+
+    public void run() {
+        String massageFormClient;
+
+        while(socket.isConnected()){
+            try{
+                massageFormClient=bufferedReader.readLine();
+//                broadcastMassage(massageFormClient);
+            }catch(IOException e){
+                closeEverything(socket,bufferedReader,bufferedWriter);
+                break;
+            }
         }
     }
 
@@ -34,7 +48,7 @@ public class ClientHandler implements Runnable{
         for(ClientHandler clientHandler : client){
             try{
                 if(!clientHandler.clientUsername.equals(clientUsername)){
-                    clientHandler.bufferedWriter.write(massageToSend);
+//                    clientHandler.bufferedWriter.write(massageToSend);
                     clientHandler.bufferedWriter.newLine();
                     clientHandler.bufferedWriter.flush();
                 }
@@ -66,17 +80,5 @@ public class ClientHandler implements Runnable{
     }
 
 
-    public void run() {
-        String massageFormClient;
 
-        while(socket.isConnected()){
-            try{
-                massageFormClient=bufferedReader.readLine();
-                broadcastMassage(massageFormClient);
-            }catch(IOException e){
-                closeEverything(socket,bufferedReader,bufferedWriter);
-                break;
-            }
-        }
-    }
 }

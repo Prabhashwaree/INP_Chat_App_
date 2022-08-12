@@ -15,6 +15,11 @@ public class ChatRoomFormController {
     public TextField txtMessage;
     public AnchorPane chatRoomPane;
 
+
+    public static void main(String[] args) {
+
+    }
+
     public void txtAreaOnAction(MouseEvent mouseEvent) {
     }
 
