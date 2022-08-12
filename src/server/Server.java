@@ -1,7 +1,10 @@
 package server;
 
+import client.ClientHandler;
+
 import java.io.IOException;
 import java.net.ServerSocket;
+import java.net.Socket;
 
 public class Server {
    
@@ -19,5 +22,17 @@ public class Server {
     }
 
     private void serverSocket() {
+        try{
+            while (!serverSocket.isClosed()) {
+                Socket socket = null;
+
+                socket = serverSocket.accept();
+
+                System.out.println("client has connectd");
+
+            }
+        }catch (IOException exception){
+            exception.printStackTrace();
+        }
     }
 }
