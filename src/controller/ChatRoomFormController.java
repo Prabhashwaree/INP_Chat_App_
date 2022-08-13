@@ -55,12 +55,27 @@ public class ChatRoomFormController extends Thread {
     public void run() {
         try {
             while (true) {
-//                String msg = reader.readLine();
-//                System.out.println(msg);
-                System.out.println("awwwwwaaaa");
-//                String[] tokens = msg.split(" ");
-//                String cmd = tokens[0];
+                String msg = reader.readLine();
 
+                String[] sms = msg.split(" ");
+                String cmd = sms[0];
+
+                StringBuilder fullMassage = new StringBuilder();
+                for (int i = 1; i < sms.length; i++) {
+                    fullMassage.append(sms[i]);
+                    System.out.println(fullMassage);
+                }
+                System.out.println(fullMassage);
+
+                String[] massageArray = msg.split(" ");
+                String m = "";
+                for (int i = 0; i < massageArray.length - 1; i++) {
+                    m += massageArray[i + 1] + " ";
+                }
+                System.out.println(massageArray);
+
+                Text text = new Text(m);
+                String firstChars = "";
 
             }
 
@@ -72,7 +87,7 @@ public class ChatRoomFormController extends Thread {
     public void send() {
         String msg = txtMessage.getText();
         System.out.println("msg   :"  + msg);
-//        writer.println(lblName.getText() + ": " );
+        writer.println(lblName.getText() + ": " + txtMessage.getText());
         txtMessage.clear();
     }
 

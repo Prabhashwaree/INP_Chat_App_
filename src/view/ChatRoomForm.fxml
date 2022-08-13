@@ -131,7 +131,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Label fx:id="lblName" layoutX="260.0" layoutY="73.0" prefHeight="17.0" prefWidth="86.0" />
+      <Label fx:id="lblName" layoutX="260.0" layoutY="73.0" prefHeight="17.0" prefWidth="86.0"  text="User" />
       <ScrollPane layoutX="2.0" layoutY="97.0" prefHeight="327.0" prefWidth="359.0">
          <content>
             <VBox fx:id="vBox" prefHeight="337.0" prefWidth="338.0" />
