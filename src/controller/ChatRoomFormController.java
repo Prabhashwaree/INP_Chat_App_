@@ -8,9 +8,12 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.FileChooser;
@@ -71,17 +74,52 @@ public class ChatRoomFormController extends Thread {
                 String m = "";
                 for (int i = 0; i < massageArray.length - 1; i++) {
                     m += massageArray[i + 1] + " ";
+                    System.out.println("Line 77 ->:"+massageArray[0]);
                 }
                 System.out.println(massageArray);
 
                 Text text = new Text(m);
+                System.out.println("Line 82  ->:"+text);
                 String firstChars = "";
+
+                if (m.length() > 3) {
+                    firstChars = m.substring(0, 3);
+                    System.out.println("Line 87  ->:"+firstChars);
+                }
+
 
                 if (firstChars.equalsIgnoreCase("img")) {
 
+
+//                    m = m.substring(3, m.length() - 1);
+//                    System.out.println("Line 95  :" + m);
+//
+//
+//
+//                    HBox hBox = new HBox(10);
+//                    hBox.setAlignment(Pos.BOTTOM_RIGHT);
+
+
                     if (!cmd.equalsIgnoreCase(lblName.getText())) {
+//
+//                        vBox.setAlignment(Pos.TOP_LEFT);
+//                        hBox.setAlignment(Pos.CENTER_LEFT);
+//
+//                        Text text1 = new Text("  " + cmd + " :");
+//                        System.out.println("Line 110 >:" +cmd);
+//                        hBox.getChildren().add(text1);
+////                        hBox.getChildren().add(imageView);
+
+                    } else {
+//                        hBox.setAlignment(Pos.BOTTOM_RIGHT);
+////                        hBox.getChildren().add(imageView);
+//                        Text text1 = new Text(": Me ");
+//                        hBox.getChildren().add(text1);
 
                     }
+//                    Platform.runLater(() -> vBox.getChildren().addAll(hBox));
+
+
                 } else {
                     TextFlow tempFlow = new TextFlow();
 
@@ -90,21 +128,26 @@ public class ChatRoomFormController extends Thread {
                         txtName.getStyleClass().add("txtName");
                         tempFlow.getChildren().add(txtName);
                     }
-                    HBox hBox = new HBox(12); //12
 
-                    if (!cmd.equalsIgnoreCase(lblName.getText() + ":")) {
+                    tempFlow.getChildren().add(text);
+                    tempFlow.setMaxWidth(200);
+                    TextFlow flow = new TextFlow(tempFlow);
+
+                    HBox hBox = new HBox(12);
+
+                    if (!cmd.equalsIgnoreCase(lblName.getText() + " :")) {
+                        vBox.setAlignment(Pos.TOP_LEFT);
+                        hBox.setAlignment(Pos.CENTER_LEFT);
+                        hBox.getChildren().add(flow);
 
                     } else {
-                        tempFlow.getStyleClass().add("tempFlow");
-                        Text text2=new Text(fullMassage+":Me");
+                        Text text2 = new Text(fullMassage + " :Me");
                         TextFlow flow2 = new TextFlow(text2);
                         hBox.setAlignment(Pos.BOTTOM_RIGHT);
                         hBox.getChildren().add(flow2);
                     }
-                    hBox.getStyleClass().add("hbox");
                     Platform.runLater(() -> vBox.getChildren().addAll(hBox));
                 }
-
             }
 
         } catch (Exception e) {
