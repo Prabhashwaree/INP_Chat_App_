@@ -5,11 +5,12 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Ellipse?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
@@ -130,7 +131,11 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <TextArea fx:id="txtArea" layoutX="14.0" layoutY="61.0" onDragDetected="#txtAreaOnAction" opacity="0.0" prefHeight="365.0" prefWidth="351.0" />
       <Label fx:id="lblName" layoutX="260.0" layoutY="73.0" prefHeight="17.0" prefWidth="86.0" />
+      <ScrollPane layoutX="2.0" layoutY="72.0" prefHeight="343.0" prefWidth="359.0">
+         <content>
+            <VBox fx:id="vBox" prefHeight="324.0" prefWidth="338.0" />
+         </content>
+      </ScrollPane>
    </children>
 </AnchorPane>
