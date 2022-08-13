@@ -77,6 +77,34 @@ public class ChatRoomFormController extends Thread {
                 Text text = new Text(m);
                 String firstChars = "";
 
+                if (firstChars.equalsIgnoreCase("img")) {
+
+                    if (!cmd.equalsIgnoreCase(lblName.getText())) {
+
+                    }
+                } else {
+                    TextFlow tempFlow = new TextFlow();
+
+                    if (!cmd.equalsIgnoreCase(lblName.getText() + ":")) {
+                        Text txtName = new Text(cmd + " ");
+                        txtName.getStyleClass().add("txtName");
+                        tempFlow.getChildren().add(txtName);
+                    }
+                    HBox hBox = new HBox(12); //12
+
+                    if (!cmd.equalsIgnoreCase(lblName.getText() + ":")) {
+
+                    } else {
+                        tempFlow.getStyleClass().add("tempFlow");
+                        Text text2=new Text(fullMassage+":Me");
+                        TextFlow flow2 = new TextFlow(text2);
+                        hBox.setAlignment(Pos.BOTTOM_RIGHT);
+                        hBox.getChildren().add(flow2);
+                    }
+                    hBox.getStyleClass().add("hbox");
+                    Platform.runLater(() -> vBox.getChildren().addAll(hBox));
+                }
+
             }
 
         } catch (Exception e) {
