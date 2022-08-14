@@ -26,7 +26,7 @@ public class ClientHandler extends Thread{
     }
 
 
-    public void  runner(){
+    public void  run(){
         try{
             String massage;
             while ((massage = reader.readLine()) !=null){
