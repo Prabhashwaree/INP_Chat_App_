@@ -56,71 +56,70 @@ public class ChatRoomFormController extends Thread {
 
     @Override
     public void run() {
-        try {
+      try {
             while (true) {
+
+
                 String msg = reader.readLine();
+                String[] tokens = msg.split(" ");
+                String cmd = tokens[0];
 
-                String[] sms = msg.split(" ");
-                String cmd = sms[0];
-
-                StringBuilder fullMassage = new StringBuilder();
-                for (int i = 1; i < sms.length; i++) {
-                    fullMassage.append(sms[i]);
-                    System.out.println(fullMassage);
+                
+                StringBuilder fullMsg = new StringBuilder();
+                for (int i = 1; i < tokens.length; i++) {
+                    fullMsg.append(tokens[i]);
                 }
-                System.out.println(fullMassage);
-
-                String[] massageArray = msg.split(" ");
-                String m = "";
-                for (int i = 0; i < massageArray.length - 1; i++) {
-                    m += massageArray[i + 1] + " ";
-                    System.out.println("Line 77 ->:"+massageArray[0]);
+                
+                String[] msgToAr = msg.split(" ");
+                String st = "";
+                for (int i = 0; i < msgToAr.length - 1; i++) {
+                    st += msgToAr[i + 1] + " ";
                 }
-                System.out.println(massageArray);
-
-                Text text = new Text(m);
-                System.out.println("Line 82  ->:"+text);
+                Text text = new Text(st);
                 String firstChars = "";
-
-                if (m.length() > 3) {
-                    firstChars = m.substring(0, 3);
-                    System.out.println("Line 87  ->:"+firstChars);
+                if (st.length() > 3) {
+                    firstChars = st.substring(0, 3);
                 }
-
-
                 if (firstChars.equalsIgnoreCase("img")) {
 
+                    st = st.substring(3, st.length() - 1);
+                    
+                    File file = new File(st);
+                    Image image = new Image(file.toURI().toString());
 
-//                    m = m.substring(3, m.length() - 1);
-//                    System.out.println("Line 95  :" + m);
-//
-//
-//
-//                    HBox hBox = new HBox(10);
-//                    hBox.setAlignment(Pos.BOTTOM_RIGHT);
+                    ImageView imageView = new ImageView(image);
+
+                    imageView.setFitHeight(150);
+                    imageView.setFitWidth(200);
+
+
+                    HBox hBox = new HBox(10);
+                    hBox.setAlignment(Pos.BOTTOM_RIGHT);
 
 
                     if (!cmd.equalsIgnoreCase(lblName.getText())) {
-//
-//                        vBox.setAlignment(Pos.TOP_LEFT);
-//                        hBox.setAlignment(Pos.CENTER_LEFT);
-//
-//                        Text text1 = new Text("  " + cmd + " :");
-//                        System.out.println("Line 110 >:" +cmd);
-//                        hBox.getChildren().add(text1);
-////                        hBox.getChildren().add(imageView);
+
+                        vBox.setAlignment(Pos.TOP_LEFT);
+                        hBox.setAlignment(Pos.CENTER_LEFT);
+
+
+                        Text text1 = new Text("  " + cmd + " :");
+                        hBox.getChildren().add(text1);
+                        hBox.getChildren().add(imageView);
 
                     } else {
-//                        hBox.setAlignment(Pos.BOTTOM_RIGHT);
-////                        hBox.getChildren().add(imageView);
-//                        Text text1 = new Text(": Me ");
-//                        hBox.getChildren().add(text1);
+                        hBox.setAlignment(Pos.BOTTOM_RIGHT);
+                        hBox.getChildren().add(imageView);
+                        Text text1 = new Text(": Me ");
+                        hBox.getChildren().add(text1);
 
                     }
-//                    Platform.runLater(() -> vBox.getChildren().addAll(hBox));
+
+                    Platform.runLater(() -> vBox.getChildren().addAll(hBox));
 
 
                 } else {
+
                     TextFlow tempFlow = new TextFlow();
 
                     if (!cmd.equalsIgnoreCase(lblName.getText() + ":")) {
@@ -131,23 +130,26 @@ public class ChatRoomFormController extends Thread {
 
                     tempFlow.getChildren().add(text);
                     tempFlow.setMaxWidth(200);
+
                     TextFlow flow = new TextFlow(tempFlow);
 
                     HBox hBox = new HBox(12);
 
-                    if (!cmd.equalsIgnoreCase(lblName.getText() + " :")) {
+                    if (!cmd.equalsIgnoreCase(lblName.getText() + ":")) {
                         vBox.setAlignment(Pos.TOP_LEFT);
                         hBox.setAlignment(Pos.CENTER_LEFT);
                         hBox.getChildren().add(flow);
 
                     } else {
-                        Text text2 = new Text(fullMassage + " :Me");
+                        Text text2 = new Text(fullMsg + ":Me");
                         TextFlow flow2 = new TextFlow(text2);
                         hBox.setAlignment(Pos.BOTTOM_RIGHT);
                         hBox.getChildren().add(flow2);
                     }
                     Platform.runLater(() -> vBox.getChildren().addAll(hBox));
                 }
+
+
             }
 
         } catch (Exception e) {
