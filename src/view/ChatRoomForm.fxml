@@ -16,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="chatRoomPane" prefHeight="472.0" prefWidth="363.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ChatRoomFormController">
+<AnchorPane fx:id="chatRoomPane" prefHeight="472.0" prefWidth="363.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ChatRoomFormController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9fd0ab" height="56.0" layoutY="-1.0" stroke="#9fd0ab" strokeType="INSIDE" width="363.0" />
       <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="28.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
@@ -126,15 +126,15 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="btnCamara" blendMode="MULTIPLY" layoutX="276.0" layoutY="434.0" mnemonicParsing="false" onAction="#btnCamaraOnAction" opacity="0.0" prefHeight="26.0" prefWidth="34.0">
+      <Button fx:id="btnCamara" blendMode="MULTIPLY" layoutX="276.0" layoutY="434.0" mnemonicParsing="false" onMouseClicked="#btnCamaraOnAction" opacity="0.0" prefHeight="26.0" prefWidth="34.0">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Label fx:id="lblName" layoutX="260.0" layoutY="73.0" prefHeight="17.0" prefWidth="86.0"  text="User" />
-      <ScrollPane layoutX="2.0" layoutY="97.0" prefHeight="327.0" prefWidth="359.0">
+      <Label fx:id="lblName" layoutX="260.0" layoutY="73.0" prefHeight="17.0" prefWidth="86.0" text="User" />
+      <ScrollPane layoutX="2.0" layoutY="97.0" prefHeight="327.0" prefWidth="359.0" style="-fx-background-color: transparent;">
          <content>
-            <VBox fx:id="vBox" prefHeight="337.0" prefWidth="338.0" />
+            <VBox fx:id="vBox" prefHeight="337.0" prefWidth="338.0" style="-fx-background-color: transparent;" />
          </content>
       </ScrollPane>
    </children>
